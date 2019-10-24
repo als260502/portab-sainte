@@ -1,0 +1,36 @@
+.main-containter {
+  max-width: 100%px;
+  text-align: center;
+}
+
+.content {
+  width: 600px;
+}
+
+.main-container ul {
+  list-style: none;
+}
+
+.main-container ul li {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+
+
+}
+
+.main-container ul li .btn-li {
+  text-align: left;
+  margin-bottom: 1px;
+  border: 0;
+  border-radius: 2px;
+  height: 20px;
+  padding: 0 2px;
+  font-size: 14px;
+  font-weight: bold;
+  background: #5a82f0;
+  color: #fff;
+  cursor: pointer;
+}

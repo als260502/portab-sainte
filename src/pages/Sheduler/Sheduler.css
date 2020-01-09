@@ -1,0 +1,12 @@
+input[name=data]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[name=hora]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[name=hora] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

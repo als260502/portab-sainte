@@ -1,38 +1,67 @@
 import React, { useEffect, useState } from "react";
 import Buttons from "../Buttons";
 import api from "../../services/api";
+
+import Fones from '../../components/Fones'
+import Pagination from '../../components/Pagination'
+
 import "./Dashboard.css";
 
-export default function Dashboard() {
+export default function Dashboard({ history }) {
   const [fones, setFones] = useState([]);
-  useEffect(() => {
-    async function loadFones() {
-      const response = await api.get("/sheduler");
+  const [alerta, setAlerta] = useState([]);
+  const [page, setPage] = useState([])
+  const [itensPerPage, setItensPerPage] = useState(10)
+  const [totalPages, setTotalPages] = useState(0)
 
-      setFones(response.data);
+  const loadFones = async () => {
+
+    const { state } = history.location
+    if (state) setAlerta(state.msg)
+    try {
+      const response = await api.get(`portabilidade/back/sheduler/${page}`, {
+        headers: {
+          page,
+          itensPerPage
+        }
+      });
+      //console.log(response.data)
+
+      if (response) {
+        setFones(response.data.result);
+        setTotalPages(response.data.totalPage)
+      }
+
+    } catch (error) {
+      console.error("nenhum item cadastrado ou nao foi possivel conectar a base de dados")
+      console.log(error)
     }
-    loadFones();
-  }, [fones]);
+
+  }
+
+  useEffect(() => {
+    loadFones()
+  }, [page]);
+
+  const paginate = (pageNumber) => {
+    setPage(pageNumber)
+  }
 
   return (
     <>
       <Buttons />
+      <div className='alerta'>{alerta}</div>
       <div className="main-container">
-        <ul>
-          <li>
-            <span>Cliente</span> <span>Telefone</span> <span>Numero</span>
-            <span>Data</span>
-          </li>
-          {fones.map(fone => (
-            <li key={fone.id}>
-              <button className="btn-li">{fone.codigo}</button>
-              <button className="btn-li">{fone.telefone}</button>
-              <button className="btn-li">{fone.numero}</button>
-              <button className="btn-li">{`${fone.data} ${fone.hora}`}</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+        <Fones fones={fones} />
+
+        <Pagination
+          totalPages={totalPages}
+          itensPerPage={itensPerPage}
+          paginate={paginate}
+        />
+
+      </div >
+
     </>
   );
 }

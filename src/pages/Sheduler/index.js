@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 
+import "./Sheduler.css";
+
 export default function Sheduler({ history }) {
   const [codigo, setCodigo] = useState("");
   const [numero, setNumero] = useState("");
@@ -17,7 +19,7 @@ export default function Sheduler({ history }) {
   async function HandleSubbmit(event) {
     event.preventDefault();
 
-    const response = await api.post("/sheduler", {
+    const response = await api.post("/portabilidade/back/sheduler", {
       codigo,
       numero,
       telefone,
@@ -28,7 +30,7 @@ export default function Sheduler({ history }) {
 
     if (msg) {
       localStorage.setItem("msg", msg);
-      history.push("/");
+      history.push("/portabilidade/app");
     }
   }
 

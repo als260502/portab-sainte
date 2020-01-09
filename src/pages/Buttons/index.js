@@ -5,10 +5,10 @@ import "./Buttons.css";
 const Buttons = () => {
   return (
     <div className="botoes">
-      <Link to="/">
+      <Link to="/portabilidade/app">
         <button>Agendar</button>
       </Link>
-      <Link to="/dashboard">
+      <Link to="/portabilidade/app/dashboard">
         <button>Listar</button>
       </Link>
     </div>

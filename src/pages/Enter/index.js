@@ -12,7 +12,7 @@ export default function Enter({ history }) {
 
     setAlerta("");
 
-    const response = await api.post("/telefone", { telefone });
+    const response = await api.post("/portabilidade/back/telefone", { telefone });
 
     const { error } = response.data;
 
@@ -30,7 +30,7 @@ export default function Enter({ history }) {
     localStorage.setItem("telefone", sip_username);
 
     localStorage.removeItem("msg");
-    history.push("/sheduler");
+    history.push("/portabilidade/app/sheduler");
   }
 
   useEffect(() => {

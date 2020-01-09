@@ -1,0 +1,11 @@
+span img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+span img:hover {
+  width: 23px;
+  color: blue;
+  cursor: pointer;
+  background-color: gainsboro;
+}

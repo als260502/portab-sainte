@@ -1,6 +1,6 @@
 import React from "react";
 import './Pagination.css'
-import Buttons from "../pages/Buttons";
+
 
 const Pagination = ({ totalPages, itensPerPage, paginate }) => {
   const pageNumbers = []

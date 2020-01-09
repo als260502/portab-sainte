@@ -11,7 +11,7 @@ export default function Dashboard({ history }) {
   const [fones, setFones] = useState([]);
   const [alerta, setAlerta] = useState([]);
   const [page, setPage] = useState([])
-  const [itensPerPage, setItensPerPage] = useState(10)
+  const [itensPerPage] = useState(10)
   const [totalPages, setTotalPages] = useState(0)
 
   const loadFones = async () => {

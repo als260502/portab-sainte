@@ -28,7 +28,7 @@ export default function Mail({ history, match }) {
 
   useEffect(() => {
     getFoneData();
-  }, [])
+  })
 
   function handleSubmit(event) {
     event.preventDefault()

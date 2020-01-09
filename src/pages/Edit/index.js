@@ -35,7 +35,7 @@ export default function Edit({ match, history }) {
     }
 
     getFoneData();
-  }, []);
+  });
 
   async function handleVoltar(event) {
     event.preventDefault()
@@ -60,10 +60,7 @@ export default function Edit({ match, history }) {
     setAlerta("Data de agendamento alterada com sucesso")
     history.push(`/portabilidade/app/dashboard`, { msg });
   }
-  async function handleVoltar(event) {
-    event.preventDefault()
-    history.push('/portabilidade/app/dashboard', {})
-  }
+
 
   return (
     <>
